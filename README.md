@@ -1,66 +1,177 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Restaurant Reservation Laravel Application
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This Laravel application enables users to manage restaurant reservations and view restaurants using an external API integration. It includes features for user authentication, reservation management, role-based access control, search and pagination, and unit and feature testing.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   User authentication (login, registration).
+-   Role-based access control (Admin and Regular User).
+-   CRUD operations for reservations.
+-   Search and pagination for reservations.
+-   API integration for restaurant listings.
+-   Unit and feature testing.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Requirements
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+-   PHP >= 8.1
+-   Composer (for managing PHP dependencies)
+-   Laravel 9.x or 10.x
+-   Node.js >= 14 and npm (for managing frontend dependencies)
+-   PostgreSQL (or compatible SQL database)
+-   Redis or another queue driver (optional, for any future background jobs)
+-   Git (for version control)
 
-## Learning Laravel
+## Installation
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+# Clone the Repository
+git clone https://github.com/your-username/your-repository-name.git
+cd your-repository-name
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# Install PHP Dependencies
+composer install
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# Install Node.js Dependencies
+npm install
 
-## Laravel Sponsors
+# Compile Assets
+npm run dev # for development
+npm run build # for production
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Configuration
 
-### Premium Partners
+```bash
+# Create Environment File
+cp .env.example .env
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+# Generate Application Key
+php artisan key:generate
+```
 
-## Contributing
+### Environment Variables
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Open the `.env` file and configure the following:
 
-## Code of Conduct
+```env
+APP_NAME=RestaurantReservation
+APP_ENV=local
+APP_KEY=base64:your_generated_key
+APP_DEBUG=true
+APP_TIMEZONE=UTC
+APP_URL=http://localhost
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+APP_LOCALE=en
+APP_FALLBACK_LOCALE=en
+APP_FAKER_LOCALE=en_US
 
-## Security Vulnerabilities
+LOG_CHANNEL=stack
+LOG_STACK=single
+LOG_LEVEL=debug
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=restaurant_reservation
+DB_USERNAME=Abbas
+DB_PASSWORD=Abbas123$
 
-## License
+SESSION_DRIVER=database
+SESSION_LIFETIME=120
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+BROADCAST_CONNECTION=log
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=database
+
+CACHE_STORE=database
+CACHE_PREFIX=
+
+MAIL_MAILER=smtp
+MAIL_HOST=sandbox.smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=785746730f8998
+MAIL_PASSWORD=your_mailtrap_password # Replace with actual password
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+VITE_APP_NAME="${APP_NAME}"
+
+YELP_API_KEY=h-OIiyDyMwIQnf6rHXID4HKK7LYu8T-txUiqI88s_cClJVaCigR5i-IEh3m7r94NXSG8BOf6-nR1PvtYcWCLCNjVu06tZmZAomz3Qtygo-mTMOSDLQhs3prseHAmZ3Yx
+```
+
+Replace the placeholder values above with your actual configuration details.
+
+## Database Setup
+
+### Step 1: Create the Database
+
+Create a PostgreSQL database for the application.
+
+### Step 2: Run Migrations
+
+Run the following command to create tables in the database:
+
+```bash
+php artisan migrate
+```
+
+### Step 3: Seed the Database (Optional)
+
+If you have seeders, you can populate the database with sample data:
+
+```bash
+php artisan db:seed
+```
+
+---
+
+## Running the Application
+
+To start the Laravel development server, run:
+
+```bash
+php artisan serve
+```
+
+The application will be available at `http://localhost:8000`.
+
+---
+
+## Testing
+
+To run unit and feature tests, use:
+
+```bash
+php artisan test
+```
+
+This will execute all defined tests and display the results.
+
+---
+
+## API Integration
+
+This project integrates with the Yelp API to fetch restaurant data. Ensure you have configured your `YELP_API_KEY` in the `.env` file.
+
+---
+
+## Folder Structure
+
+The following are key folders in this Laravel project:
+
+-   `app/Models` - Contains Eloquent models.
+-   `app/Http/Controllers` - Contains controllers handling requests.
+-   `resources/views` - Contains Blade templates for front-end.
+-   `database/migrations` - Contains database migration files.
+-   `tests` - Contains unit and feature tests.
+
+---
+
+## Troubleshooting
+
+If you encounter issues during setup, check that:
+
+1. Environment variables are set correctly.
+2. Database credentials match your local setup.
+3. Required PHP extensions are enabled.
