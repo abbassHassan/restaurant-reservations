@@ -45,8 +45,6 @@ npm run build # for production
 # Create Environment File
 cp .env.example .env
 
-# Generate Application Key
-php artisan key:generate
 ```
 
 ### Environment Variables
