@@ -114,14 +114,6 @@ Run the following command to create tables in the database:
 php artisan migrate
 ```
 
-### Step 3: Seed the Database (Optional)
-
-If you have seeders, you can populate the database with sample data:
-
-```bash
-php artisan db:seed
-```
-
 ---
 
 ## Running the Application
